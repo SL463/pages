@@ -16,9 +16,11 @@
     --grass-dk:#1f9d5b;
     --gold:#ffcf4d;
     --heat:#ff6b6b;
+    --heat-dk:#a83a3a;
     --chip:#1d2b45;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
   body{
     font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
     background:
@@ -26,9 +28,52 @@
       var(--bg);
     color:var(--ink);
     line-height:1.55;
-    padding:48px 20px 80px;
+    padding-bottom:56px;
   }
-  .wrap{max-width:860px;margin:0 auto}
+
+  /* ===== Network masthead ===== */
+  .network-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:#070c17;border-bottom:1px solid var(--line);
+    padding:12px 20px;flex-wrap:wrap;
+  }
+  .network-id{display:flex;align-items:center;gap:10px}
+  .network-logo{
+    display:grid;place-items:center;width:34px;height:34px;border-radius:8px;
+    background:linear-gradient(160deg,var(--heat),var(--heat-dk));
+    font-weight:900;font-size:13px;letter-spacing:-.02em;color:#1a0a0a;
+  }
+  .network-name{font-weight:800;letter-spacing:.06em;font-size:13px}
+  .network-name span{color:var(--muted);font-weight:600}
+  .onair{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--muted);font-weight:700}
+  .live-dot{
+    display:inline-flex;align-items:center;gap:6px;color:var(--heat);letter-spacing:.08em;
+  }
+  .live-dot i{
+    width:8px;height:8px;border-radius:50%;background:var(--heat);
+    box-shadow:0 0 0 0 rgba(255,107,107,.6);animation:pulse 1.6s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,107,107,.55)}
+    70%{box-shadow:0 0 0 8px rgba(255,107,107,0)}
+    100%{box-shadow:0 0 0 0 rgba(255,107,107,0)}
+  }
+
+  /* ===== Breaking banner ===== */
+  .breaking{
+    display:flex;align-items:center;gap:0;background:linear-gradient(90deg,var(--heat-dk),#7a2c2c);
+    overflow:hidden;
+  }
+  .breaking .tag{
+    flex:0 0 auto;background:var(--heat);color:#2a0e0e;font-weight:900;font-size:12px;
+    letter-spacing:.12em;padding:8px 16px;
+  }
+  .breaking .msg{
+    padding:8px 16px;font-size:13px;font-weight:700;color:#ffe3e3;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .wrap{max-width:860px;margin:0 auto;padding:40px 20px 0}
 
   /* Header */
   .kicker{
@@ -42,6 +87,13 @@
   }
   h1 .hl{color:var(--gold)}
   .sub{color:var(--muted);font-size:16px;max-width:620px}
+  .byline{
+    display:flex;align-items:center;gap:10px;margin-top:18px;font-size:12.5px;color:var(--muted);
+  }
+  .byline .av{
+    width:26px;height:26px;border-radius:50%;background:linear-gradient(160deg,var(--grass),var(--grass-dk));
+    display:grid;place-items:center;font-size:11px;font-weight:800;color:#07110a;
+  }
   .rule{height:3px;width:64px;background:linear-gradient(90deg,var(--grass),transparent);
     border-radius:3px;margin:26px 0 8px}
 
@@ -49,7 +101,7 @@
   .card{
     position:relative;background:linear-gradient(180deg,var(--panel),var(--panel-2));
     border:1px solid var(--line);border-radius:16px;
-    padding:26px 26px 26px 92px;margin-top:22px;overflow:hidden;
+    padding:26px 26px 0 92px;margin-top:22px;overflow:hidden;
   }
   .rankNum{
     position:absolute;left:-6px;top:-14px;font-size:96px;font-weight:800;
@@ -61,22 +113,24 @@
     background:linear-gradient(160deg,var(--grass),var(--grass-dk));
     box-shadow:0 6px 18px rgba(61,220,132,.25);
   }
+  .story-label{
+    font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--heat);margin-bottom:8px;
+  }
   .headline{font-size:21px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
-  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-  .chip{
-    font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--ink);
-    background:var(--chip);border:1px solid var(--line);border-radius:100px;padding:5px 12px;
-  }
-  .chip.pick{color:var(--gold)}
-  .team{
-    display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;
-    background:rgba(61,220,132,.1);border:1px solid var(--grass-dk);color:var(--grass);
-    border-radius:100px;padding:5px 12px;text-transform:uppercase;letter-spacing:.04em;
-  }
-  .team.heat{background:rgba(255,107,107,.1);border-color:#7d3838;color:var(--heat)}
-  .team.you{background:rgba(255,207,77,.12);border-color:#8a6f1f;color:var(--gold)}
-  .blurb{color:#cdd8ee;font-size:15.5px}
+  .blurb{color:#cdd8ee;font-size:15.5px;padding-bottom:20px}
   .blurb b{color:var(--ink)}
+
+  /* Score-bug chyron */
+  .chyron{
+    display:flex;align-items:stretch;margin:0 -26px 0;border-top:1px solid var(--line);
+    background:#0d1526;font-size:12px;font-weight:800;letter-spacing:.03em;
+  }
+  .chyron > div{padding:10px 16px;display:flex;align-items:center;gap:8px}
+  .chyron .ov{background:var(--gold);color:#241a02}
+  .chyron .pos{color:var(--ink);border-right:1px solid var(--line)}
+  .chyron .team{color:var(--grass);flex:1;justify-content:flex-end;text-transform:uppercase}
+  .chyron.heat .team{color:var(--heat)}
+  .chyron.you .team{color:var(--gold)}
 
   /* Honorable mentions */
   .hm{margin-top:34px;background:var(--panel);border:1px solid var(--line);
@@ -87,16 +141,65 @@
   .hm li::before{content:"▸";position:absolute;left:0;color:var(--grass)}
   .hm b{color:var(--ink)}
 
-  footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+  footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px;padding:0 20px}
   footer .dot{color:var(--grass);margin:0 8px}
+
+  /* ===== Bottom ticker ===== */
+  .ticker-bar{
+    position:sticky;bottom:0;left:0;right:0;margin-top:44px;
+    background:#070c17;border-top:1px solid var(--line);
+    display:flex;align-items:stretch;overflow:hidden;
+  }
+  .ticker-label{
+    flex:0 0 auto;background:var(--grass);color:#07110a;font-weight:900;font-size:12px;
+    letter-spacing:.08em;padding:10px 16px;display:flex;align-items:center;
+  }
+  .ticker-track{flex:1;overflow:hidden;white-space:nowrap;position:relative}
+  .ticker-track ul{
+    display:inline-flex;gap:48px;list-style:none;padding:10px 0;
+    animation:scroll 32s linear infinite;
+  }
+  .ticker-track li{font-size:12.5px;color:var(--muted);font-weight:600}
+  .ticker-track li b{color:var(--ink)}
+  @keyframes scroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track ul{animation:none}
+    .live-dot i{animation:none}
+  }
+
+  @media (max-width:520px){
+    .card{padding-left:26px}
+    .badge, .rankNum{display:none}
+  }
 </style>
 </head>
 <body>
+
+  <div class="network-bar">
+    <div class="network-id">
+      <span class="network-logo">L1N</span>
+      <span class="network-name">LEAGUE1 NETWORK <span>· DRAFT NIGHT DESK</span></span>
+    </div>
+    <div class="onair">
+      <span class="live-dot"><i></i> LIVE</span>
+      <span>10-TEAM SNAKE · 15 ROUNDS</span>
+    </div>
+  </div>
+
+  <div class="breaking">
+    <span class="tag">Breaking</span>
+    <span class="msg">Draft board finalized — five picks have the league buzzing, plus a full honorable-mentions wrap.</span>
+  </div>
+
   <div class="wrap">
     <header>
       <span class="kicker">League1 · 2026 Draft</span>
       <h1>The Top 5 <span class="hl">Most Surprising</span> Moves</h1>
       <p class="sub">Ten teams, fifteen rounds, one snake draft on Sleeper. Here are the picks that broke furthest from how this class was actually valued — the reaches, the runs, and the slides.</p>
+      <div class="byline"><span class="av">L1</span> L1N Draft Desk · Filed live from the draft room</div>
       <div class="rule"></div>
     </header>
 
@@ -104,70 +207,75 @@
     <article class="card">
       <span class="rankNum">1</span>
       <span class="badge">1</span>
+      <div class="story-label">Top Story</div>
       <h2 class="headline">Gibbs goes No. 1 overall — Chase falls to 1.3</h2>
-      <div class="meta">
-        <span class="chip pick">Pick 1 · R1.P1</span>
-        <span class="chip">RB · DET</span>
-        <span class="team">panksa</span>
-      </div>
       <p class="blurb">Ja'Marr Chase was the closest thing this format has to a consensus 1.1 — a true bell-cow receiver with no committee to split touches with. <b>panksa</b> passed anyway and opened the draft on Jahmyr Gibbs, and Chase didn't even go second: Bijan Robinson and Christian McCaffrey both came off the board first, dropping Chase to <b>pick 3</b>. The boldest claim on the whole board.</p>
+      <div class="chyron">
+        <div class="ov">PICK 1</div>
+        <div class="pos">RB · DET</div>
+        <div class="team">panksa</div>
+      </div>
     </article>
 
     <!-- 2 -->
     <article class="card">
       <span class="rankNum">2</span>
       <span class="badge">2</span>
+      <div class="story-label">Developing</div>
       <h2 class="headline">The quarterback room splits in two</h2>
-      <div class="meta">
-        <span class="chip pick">Picks 18 &amp; 24</span>
-        <span class="chip">QB run</span>
-        <span class="team heat">paulkimmm &amp; sophiamhwang</span>
-      </div>
       <p class="blurb"><b>paulkimmm</b> broke first, taking Josh Allen at pick 18, and <b>sophiamhwang</b> followed one round later with Jordan Love at pick 24 — both gone before a single tight end left the board. Then the position vanished: Joe Burrow lasted until <b>pick 54</b>, Jalen Hurts fell to <b>pick 60</b>, and Justin Herbert didn't go until <b>pick 86</b> — 68 picks after Allen. Same room, same scoring, two completely different theories of QB value.</p>
+      <div class="chyron heat">
+        <div class="ov">PICKS 18–86</div>
+        <div class="pos">QB RUN</div>
+        <div class="team">paulkimmm &amp; sophiamhwang</div>
+      </div>
     </article>
 
     <!-- 3 -->
     <article class="card">
       <span class="rankNum">3</span>
       <span class="badge">3</span>
+      <div class="story-label">Homefield Angle</div>
       <h2 class="headline">Puka Nacua goes 1.5 — ahead of three first-round backs</h2>
-      <div class="meta">
-        <span class="chip pick">Pick 5 · R1.P5</span>
-        <span class="chip">WR · LAR</span>
-        <span class="team you">marylivengood (you)</span>
-      </div>
       <p class="blurb">Taking the second receiver off the board isn't unusual — taking him ahead of Jonathan Taylor, James Cook, and Saquon Barkley is. This pick bet a proven, three-down workhorse class would keep falling, and it did: all three of those backs went in the next five selections. A defensible read on a massive target share, and the pick that forced three teams behind it to scramble for their RB1 a round early.</p>
+      <div class="chyron you">
+        <div class="ov">PICK 5</div>
+        <div class="pos">WR · LAR</div>
+        <div class="team">marylivengood (you)</div>
+      </div>
     </article>
 
     <!-- 4 -->
     <article class="card">
       <span class="rankNum">4</span>
       <span class="badge">4</span>
+      <div class="story-label">Analysis</div>
       <h2 class="headline">Saquon Barkley closes out Round 1</h2>
-      <div class="meta">
-        <span class="chip pick">Pick 10 · R1.P10</span>
-        <span class="chip">RB · PHI</span>
-        <span class="team">mayavenkat11</span>
-      </div>
       <p class="blurb">Barkley was the league's rushing leader as recently as last season, yet he was the sixth and final running back off the board in Round 1 — behind Gibbs, Robinson, McCaffrey, Taylor, and Cook. Landing at the very last pick of the round instead of anywhere in the top four reads as the room pricing in real mileage on an aging feature back, even one coming off an MVP-caliber year.</p>
+      <div class="chyron">
+        <div class="ov">PICK 10</div>
+        <div class="pos">RB · PHI</div>
+        <div class="team">mayavenkat11</div>
+      </div>
     </article>
 
     <!-- 5 -->
     <article class="card">
       <span class="rankNum">5</span>
       <span class="badge">5</span>
+      <div class="story-label">Wild Swing</div>
       <h2 class="headline">Kickers and defenses jump the line</h2>
-      <div class="meta">
-        <span class="chip pick">Picks 94, 107 &amp; 113</span>
-        <span class="chip">K / D-ST</span>
-        <span class="team heat">javycane &amp; CRUNCHTIME1</span>
-      </div>
       <p class="blurb">Kickers and defenses are supposed to be the last thing a manager thinks about — the punt positions everyone streams off waivers in November. Not here. <b>javycane</b> grabbed the Texans' defense at <b>pick 94</b> and Brandon Aubrey at <b>pick 107</b>, and <b>CRUNCHTIME1</b> took Denver's defense at <b>pick 113</b> — all three, three-to-five rounds ahead of schedule with plenty of skill players still on the board.</p>
+      <div class="chyron heat">
+        <div class="ov">PICKS 94–113</div>
+        <div class="pos">K / D-ST</div>
+        <div class="team">javycane &amp; CRUNCHTIME1</div>
+      </div>
     </article>
 
     <!-- Honorable mentions -->
     <section class="hm">
-      <h3>Honorable Mentions</h3>
+      <h3>Also In The Newsroom</h3>
       <ul>
         <li><b>George Kittle</b> to <b>marylivengood</b> (Pick 76) — a 55-pick gap behind Brock Bowers, the TE1 off the board at pick 21.</li>
         <li><b>DK Metcalf</b> to <b>sophiamhwang</b> (Pick 84) — a talent of his pedigree lasting into Round 9 after the offseason trade to Pittsburgh.</li>
@@ -181,5 +289,26 @@
       League1 2026 <span class="dot">●</span> Fantasy Draft Recap <span class="dot">●</span> Generated by Claude
     </footer>
   </div>
+
+  <div class="ticker-bar">
+    <span class="ticker-label">L1N Wire</span>
+    <div class="ticker-track">
+      <ul>
+        <li><b>PICK 1:</b> Gibbs jumps Chase for the No. 1 overall slot</li>
+        <li><b>QB WATCH:</b> Allen and Love off the board inside the top 24</li>
+        <li><b>SLIDE ALERT:</b> Burrow waits until pick 54</li>
+        <li><b>PICK 5:</b> Nacua goes ahead of three first-round RBs</li>
+        <li><b>PICK 10:</b> Barkley closes out Round 1</li>
+        <li><b>REACH WATCH:</b> Two D/STs and a kicker gone before pick 115</li>
+        <li><b>PICK 1:</b> Gibbs jumps Chase for the No. 1 overall slot</li>
+        <li><b>QB WATCH:</b> Allen and Love off the board inside the top 24</li>
+        <li><b>SLIDE ALERT:</b> Burrow waits until pick 54</li>
+        <li><b>PICK 5:</b> Nacua goes ahead of three first-round RBs</li>
+        <li><b>PICK 10:</b> Barkley closes out Round 1</li>
+        <li><b>REACH WATCH:</b> Two D/STs and a kicker gone before pick 115</li>
+      </ul>
+    </div>
+  </div>
+
 </body>
 </html>
