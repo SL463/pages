@@ -1,0 +1,443 @@
+<title>MPMS Draft Surprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #eef0ea;
+    --surface: #ffffff;
+    --surface-2: #e2e5dd;
+    --text: #1a2019;
+    --text-dim: #5c6558;
+    --text-faint: #8b9385;
+    --accent: #a8630f;
+    --accent-soft: #f2e2cd;
+    --accent-2: #1c7d6c;
+    --rule: #d3d7cb;
+    --shadow: 0 1px 2px rgba(20,25,15,0.06), 0 8px 24px -12px rgba(20,25,15,0.18);
+
+    --pos-rb: #2f8f57;
+    --pos-wr: #2f6fa8;
+    --pos-qb: #b73a52;
+    --pos-te: #b6721c;
+    --pos-k: #7457a6;
+    --pos-dst: #786a4e;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161c;
+      --surface: #1a2029;
+      --surface-2: #222a35;
+      --text: #eceef0;
+      --text-dim: #a2acbb;
+      --text-faint: #6d7788;
+      --accent: #e3a04a;
+      --accent-soft: #33291a;
+      --accent-2: #59c4ae;
+      --rule: #2c3441;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.55);
+
+      --pos-rb: #4bb578;
+      --pos-wr: #5b9bd6;
+      --pos-qb: #e06a80;
+      --pos-te: #e0a353;
+      --pos-k: #a487d6;
+      --pos-dst: #a99b7d;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12161c;
+    --surface: #1a2029;
+    --surface-2: #222a35;
+    --text: #eceef0;
+    --text-dim: #a2acbb;
+    --text-faint: #6d7788;
+    --accent: #e3a04a;
+    --accent-soft: #33291a;
+    --accent-2: #59c4ae;
+    --rule: #2c3441;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.55);
+
+    --pos-rb: #4bb578;
+    --pos-wr: #5b9bd6;
+    --pos-qb: #e06a80;
+    --pos-te: #e0a353;
+    --pos-k: #a487d6;
+    --pos-dst: #a99b7d;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin: 0 0 14px;
+  }
+
+  h1.title {
+    font-family: "Oswald", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 54px);
+    letter-spacing: -0.01em;
+    line-height: 1.02;
+    margin: 0 0 18px;
+    text-wrap: balance;
+    color: var(--text);
+  }
+
+  .dek {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 62ch;
+    margin: 0 0 28px;
+  }
+
+  .meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0 0 40px;
+    list-style: none;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 0;
+  }
+
+  .meta-strip li {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-dim);
+    padding: 4px 10px;
+    background: var(--surface-2);
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .intro p {
+    font-size: 17.5px;
+    color: var(--text);
+    max-width: 66ch;
+  }
+
+  .intro p + p { margin-top: 16px; }
+
+  section.countdown {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  h2.section-head {
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 20px;
+    padding-top: 8px;
+  }
+
+  article.pick {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  article.pick:first-of-type { border-top: none; }
+
+  .rank {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+
+  .pick-body h3 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+    letter-spacing: -0.005em;
+    margin: 0 0 10px;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .pos-pill {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+
+  .pos-rb { background: var(--pos-rb); }
+  .pos-wr { background: var(--pos-wr); }
+  .pos-qb { background: var(--pos-qb); }
+  .pos-te { background: var(--pos-te); }
+  .pos-k  { background: var(--pos-k); }
+  .pos-dst{ background: var(--pos-dst); }
+
+  .draft-slot {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .draft-slot b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .drafted-by {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--accent-2);
+  }
+
+  .pick-body p {
+    font-size: 16.5px;
+    color: var(--text);
+    max-width: 60ch;
+  }
+
+  section.honorable {
+    margin-top: 52px;
+  }
+
+  .hm-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hm-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .hm-grid .hm-item + .hm-item { margin-top: 10px; }
+
+  .hm-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hm-head h4 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    font-size: 16.5px;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .hm-item p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 62ch;
+  }
+
+  footer.note {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 520px) {
+    article.pick {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+    .rank { font-size: 32px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">Sleeper Draft Review · MPMS 2026</p>
+  <h1 class="title">The Picks That Made the Room Go Quiet</h1>
+  <p class="dek">A round-by-round read of the MPMS 2026 draft board, flagging the five selections that broke furthest from how this class was actually valued heading into the season — plus five more that deserve an asterisk.</p>
+
+  <ul class="meta-strip">
+    <li>10 TEAMS</li>
+    <li>HALF-PPR</li>
+    <li>SNAKE · 15 RDS</li>
+    <li>1.5 MIN / PICK</li>
+    <li>DRAFTED SEP&nbsp;3, 2026</li>
+  </ul>
+
+  <div class="intro">
+    <p>Ten managers, fifteen rounds, one clock running down every ninety seconds. Most of this board played out the way boring, correct drafts do — early running backs, receivers stacked through the middle rounds, kickers and defenses mopped up at the very end. But five picks broke from the script hard enough to make the rest of the league sit up. Ranked below from surprising to stunning, with the case for each pull straight from the board.</p>
+  </div>
+
+  <section class="countdown">
+    <h2 class="section-head">Top 5 Surprising Moves</h2>
+
+    <article class="pick">
+      <div class="rank">01</div>
+      <div class="pick-body">
+        <h3>panksa takes Gibbs 1.1 — and lets Ja'Marr Chase fall to 1.3</h3>
+        <div class="badge-row">
+          <span class="pos-pill pos-rb">RB · DET</span>
+          <span class="draft-slot">Round <b>1</b> · Pick <b>1.1</b> · Overall <b>No. 1</b></span>
+          <span class="drafted-by">panksa</span>
+        </div>
+        <p>Ja'Marr Chase entered the season as the closest thing this format has to a consensus 1.1 — a true bell-cow receiver with no committee to split touches with. panksa passed on him anyway and started the draft with Jahmyr Gibbs, and Chase didn't even go second: Bijan Robinson (1.2) and Christian McCaffrey (1.4) both came off the board first, dropping Chase all the way to 1.3. Betting the entire draft's opening statement on a receiving back over the presumptive best player in the format is the single boldest claim on the whole board.</p>
+      </div>
+    </article>
+
+    <article class="pick">
+      <div class="rank">02</div>
+      <div class="pick-body">
+        <h3>The quarterback room splits in two</h3>
+        <div class="badge-row">
+          <span class="pos-pill pos-qb">QB</span>
+          <span class="draft-slot">Picks <b>2.8</b> &amp; <b>3.4</b> vs. <b>6.4</b>, <b>6.10</b> &amp; <b>9.6</b></span>
+        </div>
+        <p>paulkimmm broke first, taking Josh Allen at 2.8 (No. 18 overall), and sophiamhwang followed one round later with Jordan Love at 3.4 (No. 24) — both gone before a single tight end or third-string running back left the board. Then the position vanished. Joe Burrow didn't go until 6.4 (No. 54), Jalen Hurts fell all the way to 6.10 (No. 60), and Justin Herbert — a top-five arm most seasons — wasn't off the board until 9.6 (No. 86), a full 62 picks after Allen. Same twelve-team room, same scoring format, and two wildly different theories of when a quarterback is worth the pick.</p>
+      </div>
+    </article>
+
+    <article class="pick">
+      <div class="rank">03</div>
+      <div class="pick-body">
+        <h3>Puka Nacua goes 1.5, ahead of three first-round backs</h3>
+        <div class="badge-row">
+          <span class="pos-pill pos-wr">WR · LAR</span>
+          <span class="draft-slot">Round <b>1</b> · Pick <b>1.5</b> · Overall <b>No. 5</b></span>
+          <span class="drafted-by">marylivengood</span>
+        </div>
+        <p>Taking the second receiver off the board isn't unusual — taking him ahead of Jonathan Taylor, James Cook, and Saquon Barkley is. marylivengood's 1.5 selection of Puka Nacua bet a proven, three-down workhorse-back class would keep falling, and it did: all three of those backs went in the next five picks. It's a defensible read on a receiver who commanded a massive target share in 2025, but it's also the pick that forced three teams behind her to scramble for their RB1 a round earlier than they planned.</p>
+      </div>
+    </article>
+
+    <article class="pick">
+      <div class="rank">04</div>
+      <div class="pick-body">
+        <h3>Saquon Barkley closes out Round 1</h3>
+        <div class="badge-row">
+          <span class="pos-pill pos-rb">RB · PHI</span>
+          <span class="draft-slot">Round <b>1</b> · Pick <b>1.10</b> · Overall <b>No. 10</b></span>
+          <span class="drafted-by">mayavenkat11</span>
+        </div>
+        <p>Barkley was the league's rushing leader as recently as last season, yet he was the sixth and final running back to come off the board in Round 1 — behind Gibbs, Robinson, McCaffrey, Taylor, and Cook. Landing at the very last pick of the round, rather than anywhere in the 1.1–1.4 range his 2024 workload would suggest, reads as the room pricing in real mileage and age concerns on an aging feature back, even one who just posted an MVP-caliber year.</p>
+      </div>
+    </article>
+
+    <article class="pick">
+      <div class="rank">05</div>
+      <div class="pick-body">
+        <h3>Streaming positions jump the line</h3>
+        <div class="badge-row">
+          <span class="pos-pill pos-k">K · DAL</span>
+          <span class="pos-pill pos-dst">DST · HOU</span>
+          <span class="draft-slot">Picks <b>10.4</b>, <b>11.7</b> &amp; <b>12.3</b></span>
+        </div>
+        <p>Kickers and defenses are supposed to be the last thing a manager thinks about — the punt positions everyone streams off the waiver wire in November. Not here. javycane grabbed the Texans' defense at 10.4 (No. 94), Brandon Aubrey went to javycane again at 11.7 (No. 107), and CRUNCHTIME1 took Denver's defense at 12.3 (No. 113) — all three three-to-five rounds ahead of where the rest of the league's roster construction suggests these positions "should" go, with plenty of skill players still on the board.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="honorable">
+    <h2 class="section-head">Honorable Mentions</h2>
+    <div class="hm-grid">
+
+      <div class="hm-item">
+        <div class="hm-head">
+          <h4>The tight end free-fall</h4>
+          <span class="draft-slot">3.1 → 8.6</span>
+        </div>
+        <p>Brock Bowers went 3.1 (No. 21) as the clear TE1 — then the position cratered. George Kittle, a top-tier option most years, didn't come off the board until 8.6 (No. 76), a 55-pick gap between the top two tight ends on the entire board.</p>
+      </div>
+
+      <div class="hm-item">
+        <div class="hm-head">
+          <h4>DK Metcalf's Pittsburgh discount</h4>
+          <span class="draft-slot">Pick 9.4 · No. 84</span>
+        </div>
+        <p>A receiver of Metcalf's pedigree lasting until Round 9 suggests the room is still pricing in real uncertainty around his fit after the offseason trade to Pittsburgh's offense.</p>
+      </div>
+
+      <div class="hm-item">
+        <div class="hm-head">
+          <h4>Jayden Daniels waits through seven rounds</h4>
+          <span class="draft-slot">Pick 8.7 · No. 77</span>
+        </div>
+        <p>Coming off one of the more electrifying rookie seasons at the position, Daniels going nearly 60 picks after Josh Allen shows just how much the early QB run at 2.8 and 3.4 was about specific names, not the position as a whole.</p>
+      </div>
+
+      <div class="hm-item">
+        <div class="hm-head">
+          <h4>The Round 6 quarterback pile-up</h4>
+          <span class="draft-slot">Picks 6.3, 6.4 &amp; 6.10</span>
+        </div>
+        <p>Drake Maye (6.3), Joe Burrow (6.4), and Jalen Hurts (6.10) all left the board within a seven-pick window — three teams independently deciding the same late-round moment was finally the right time to fill the position.</p>
+      </div>
+
+      <div class="hm-item">
+        <div class="hm-head">
+          <h4>McCaffrey still goes top-4</h4>
+          <span class="draft-slot">Pick 1.4 · No. 4</span>
+        </div>
+        <p>Two injury-shortened seasons in the last three didn't stop sophiamhwang from spending a top-four pick on McCaffrey — a vote of confidence the rest of the room clearly didn't share for Barkley six picks later.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="note">
+    Sourced from the MPMS 2026 Sleeper draft board (10-team, half-PPR, 15-round snake). Pick notation reads Round.Pick-in-round; overall pick = (Round − 1) × 10 + Pick-in-round. "Surprising" is judged against how each player was broadly valued entering the 2026 season, not against how the pick played out afterward.
+  </footer>
+
+</div>
