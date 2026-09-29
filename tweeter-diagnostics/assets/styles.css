@@ -1,6 +1,6 @@
 /* Right tweeter troubleshooting notes */
 :root {
-  --bg: #ffffff;
+  --bg: #fbfcfd;
   --surface: #ffffff;
   --fill: #f5f6f8;
   --ink: #101418;
@@ -9,9 +9,9 @@
   --line: #e2e5e9;
   --grid: #eceef1;
   --shade: #f3f4f6;
-  --accent: #c2410c;
-  --bluf: #fff7ed;
-  --bluf-line: #fed7aa;
+  --accent: #1f4e79;
+  --bluf: #eef3f8;
+  --bluf-line: #cfdcea;
   --fl: #2a78d6;
   --fr: #eb6834;
   --tip: #101418;
@@ -37,9 +37,9 @@
     --line: #262c32;
     --grid: #1d2227;
     --shade: #151a1e;
-    --accent: #fb923c;
-    --bluf: #1f1710;
-    --bluf-line: #4a2f1a;
+    --accent: #8db6e2;
+    --bluf: #121a23;
+    --bluf-line: #243548;
     --fl: #3987e5;
     --fr: #d95926;
     --tip: #eef0f3;
