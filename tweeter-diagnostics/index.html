@@ -38,9 +38,10 @@
     <h2 id="setup-h">Setup</h2>
     <dl>
       <div><dt>Signal chain</dt><dd>Helix DSP Ultra → Helix C-FOUR → 99 µF cap → tweeter</dd></div>
-      <div><dt>Crossover</dt><dd>3.5 kHz high-pass, Linkwitz-Riley 24 dB/oct, no EQ</dd></div>
+      <div><dt>Crossover</dt><dd>3.5 kHz high-pass, Linkwitz-Riley 24 dB/oct in the DSP, always on</dd></div>
+      <div><dt>Safety cap</dt><dd>99 µF in series as a backup, in place since day one</dd></div>
       <div><dt>Amp gain</dt><dd>Set with an oscilloscope, with extra headroom</dd></div>
-      <div><dt>Mounting</dt><dd>A-pillars. The 99 µF cap has been in place since day one.</dd></div>
+      <div><dt>Mounting</dt><dd>A-pillars</dd></div>
     </dl>
   </section>
 
@@ -50,7 +51,7 @@
       <div class="legend"><span><b style="background:var(--fl)"></b>Left (FL)</span><span><b style="background:var(--fr)"></b>Right (FR)</span></div>
     </div>
     <div class="plot" id="p-spl"></div>
-    <p class="cap">SPL in dB, 1/24-octave smoothing, measured through the full system. The mic was at the driver's headrest, so the right tweeter was about 0.5 m farther away. The shaded area is below the crossover.</p>
+    <p class="cap">SPL in dB, 1/24-octave smoothing, measured through the full system with no EQ applied. The mic was at the driver's headrest, so the right tweeter was about 0.5 m farther away. The shaded area is below the crossover.</p>
     <div class="rew"><span>REW original</span>
       <button type="button" class="thumb" data-src="/tweeter-diagnostics/rew/spl_all.png" data-cap="REW SPL: left (green) and right (blue)"><img src="/tweeter-diagnostics/rew/spl_all.png" alt="REW SPL graph, both tweeters" loading="lazy">Both</button>
     </div>
